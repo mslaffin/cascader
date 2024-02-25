@@ -2,7 +2,8 @@ This repo provides functionality to read and manipulate S-parameter files, inclu
 
 The input files must follow the standardized [Touchstone](https://ibis.org/touchstone_ver2.0/touchstone_ver2_0.pdf) file format (`.snp`, where `n` is the number of ports), and contain sets of data representing scattering parameters of linear networks. 
 
-### Cascading two 2-port S-parameter models
+### Using two 2-port S-parameter models
+![top level diagram](https://github.com/mslaffin/cascader/blob/main/media/top_level_diagram.png)
 In this particular case, the script will read both files, extract both sets of parameters (each representing a two port network) and calculate the result parameters as if these two networks were connected in series. The cascading algorithm I used here utilizes a generalized two port chain scattering model. Read more this model [here](https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Microwave_and_RF_Design_III_-_Networks_(Steer)/02%3A_Chapter_2/2.4%3A_Generalized_Scattering_Parameters)
 
 The two port network can be described in the following matrix form:
