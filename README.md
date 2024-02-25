@@ -2,7 +2,8 @@ This repo provides functionality to read and manipulate S-parameter files, inclu
 
 The input files must follow the standardized [Touchstone](https://ibis.org/touchstone_ver2.0/touchstone_ver2_0.pdf) file format (`.snp`, where `n` is the number of ports), and contain sets of data representing scattering parameters of linear networks. 
 
-In the particular case of cascading two 2-port S-parameter models, the script will take both sets of parameters (each representing a two port network) and calculates the resulting S-parameters of the combined network as if these two networks were connected in series.
+### Cascading two 2-port S-parameter models
+In this particular case, the script will read both files, extract both sets of parameters (each representing a two port network) and calculate the result parameters as if these two networks were connected in series. The cascading algorithm I used here utilizes a generalized two port chain scattering model. Read more this model [here](https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Microwave_and_RF_Design_III_-_Networks_(Steer)/02%3A_Chapter_2/2.4%3A_Generalized_Scattering_Parameters)
 
 The two port network can be described in the following matrix form:
 
@@ -35,3 +36,6 @@ $$
 $$
 S_{22} = S^2_{22} + \frac{S^2_{21} \cdot S^2_{12} \cdot S^1_{22}}{1 - S^1_{22} \cdot S^2_{11}}
 $$
+
+- Note that the input and output of each network affects the other.
+- The division by $1 - S^2_{11} \cdot S^1_{22}$ or $1 - S^1_{22} \cdot S^2_{11}$ in these formulas accounds for this interaction between the two networks, improving the accuracy of the combined network's behavior. 
