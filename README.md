@@ -2,19 +2,13 @@ This repo provides functionality to read and manipulate S-parameter files, inclu
 
 The input files must follow the standardized [Touchstone](https://ibis.org/touchstone_ver2.0/touchstone_ver2_0.pdf) file format (`.snp`, where `n` is the number of ports), and contain sets of data representing scattering parameters of linear networks. 
 
-Process:
+Process Summary:
 
 1. Read S-parameter files, validate format
 2. Verify all S-parameter sets are defined over the same frequency points. If not, interpolate.
-    - TODO: resolution selection. Maybe involve selecting a subset of the interpolated frequency points based on the significant changes in the S-parameter values. 
-4. Conversion (for 3-port networks): NOT IMPLEMENTED
-5. Cascading: Perform cascading matrix operation
-6. Back Conversion (for 3-port networks): NOT IMPLEMENTED
-
-Conversion (for 3-port networks): Convert S-parameters to a parameter set more amenable to cascading (like T-parameters).
-Cascading: Perform the cascading operation. For 2-port, this is direct matrix multiplication. For 3-port, this involves the more complex operation on the chosen parameter set.
-Back Conversion (for 3-port networks): Convert the cascaded parameter set back to S-parameters.
-Resolution Selection: The final model should have a frequency resolution that captures the behavior of the combined network without unnecessary computational overhead. This might involve selecting a subset of the interpolated frequency points based on the significant changes in the S-parameter values.
+3. Conversion to T parameters (for 3-port networks): NOT IMPLEMENTED
+4. Cascading: Perform cascading matrix operation
+5. Back Conversion (for 3-port networks): NOT IMPLEMENTED
 
 ### Using two 2-port S-parameter models
 ![top level diagram](https://github.com/mslaffin/cascader/blob/main/media/top_level_diagram.png)
@@ -32,6 +26,8 @@ $$
 Where: 
 - S<sub>11</sub> and S<sub>22</sub> are the input and output reflection coefficients , respectively.
 - S<sub>21</sub> and S<sub>12</sub> are the forward and reverse transmission coefficients, respectively.
+
+
 
 ### Cascading formula
 The resulting S-parameter matrix can be calculated using the following formulas for each element of the cascaded S-parameter matrix:
