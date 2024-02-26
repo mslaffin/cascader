@@ -30,6 +30,7 @@ Where:
 
 
 ### Cascading formula
+
 The resulting S-parameter matrix can be calculated using the following formulas for each element of the cascaded S-parameter matrix:
 
 $$
@@ -51,4 +52,5 @@ $$
 - Note that the input and output of each network affects the other.
 - The division by $1 - S^2_{11} \cdot S^1_{22}$ or $1 - S^1_{22} \cdot S^2_{11}$ in these formulas accounds for this interaction between the two networks, improving the accuracy of the combined network's behavior.
 
+![cascade diagram with coefficients](https://github.com/mslaffin/cascader/blob/main/media/cascade_diagram_with_coefficients.png)
 
